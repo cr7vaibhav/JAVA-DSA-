@@ -35,8 +35,8 @@ public class BinarySearch {
 
     public static void main(String[] args) {
         // can be applicable on sorted array only
-        int nums[] = { 5, 7, 9, 11, 13 };
-        int target = 14;
+        int nums[] = new int[10000];
+        int target = 900;
         int result = binarySrc(nums, target);
         int result2 = linearSrc(nums, target);
         if (result != -1)
