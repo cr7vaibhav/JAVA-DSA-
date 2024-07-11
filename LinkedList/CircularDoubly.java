@@ -156,5 +156,10 @@ public class CircularDoubly {
         dc.deleteAtIndex(3);
         dc.showForward(dc.head);
         dc.showBackward(dc.tail);
+
+        dc.addAtIndex(24, 55);
+        dc.showForward(dc.head);
+        dc.showBackward(dc.tail);
+
     }
 }
