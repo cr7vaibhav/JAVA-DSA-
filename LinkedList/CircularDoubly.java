@@ -40,6 +40,70 @@ class Dbcir {
 
     }
 
+    public void addAfter(Node n, int data) {
+        if (head == null) {
+            Node newNode = new Node(data);
+            newNode.next = newNode.prev = newNode;
+            head = newNode;
+            return;
+        }
+
+        tail = (head).prev;
+        // finds last node
+
+        // Create Node Dynamically
+        Node newNode = new Node(data);
+
+        newNode.next = n.next;
+
+        n.next.prev = newNode;
+
+        newNode.prev = n;
+        n.next = newNode;
+
+    }
+
+    public void addAtIndex(int index, int data) {
+        if (index == 0) {
+            Node newNode = new Node(data);
+            newNode.next = newNode.prev = newNode;
+            head = newNode;
+            return;
+        }
+
+        tail = (head).prev;
+        // finds last node
+
+        // Create Node Dynamically
+        Node newNode = new Node(data);
+
+        Node temp = head;
+        for (int i = 0; i < index - 1; i++) {
+            temp = temp.next;
+        }
+        newNode.next = temp.next;
+        newNode.prev = temp;
+        temp.next.prev = newNode;
+        temp.next = newNode;
+
+    }
+
+    public void deleteAtIndex(int index) {
+        if (index == 0) {
+            head = head.next;
+        } else {
+            Node n = head;
+            Node n0 = null;
+            for (int i = 0; i < index - 1; i++) {
+                n = n.next;
+            }
+            n0 = n.next;//this is getting deleted
+            n.next = n0.next;
+            n.next.prev=n;
+            System.out.println(n0.data + " deleted at index " + index);
+        }
+    }
+
     public void showForward(Node data) {
         Node current = data;
         if (data == null) {
@@ -81,5 +145,16 @@ public class CircularDoubly {
         dc.showForward(dc.tail);
         dc.showBackward(dc.tail);
         dc.showBackward(dc.head);
+        dc.addAfter(dc.head.next.next, 27);
+        dc.showForward(dc.head);
+        dc.addAtIndex(3, 66);
+        dc.showForward(dc.head);
+        dc.showBackward(dc.tail);
+        dc.addAtIndex(4, 92);
+        dc.showForward(dc.head);
+        dc.showBackward(dc.tail);
+        dc.deleteAtIndex(3);
+        dc.showForward(dc.head);
+        dc.showBackward(dc.tail);
     }
 }

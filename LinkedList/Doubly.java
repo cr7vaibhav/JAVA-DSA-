@@ -116,7 +116,7 @@ class DoublyLl {
     }
 
     public void showForward(Node node) {
-
+        System.out.println("forward traverasal");
         while (node != null) {
             System.out.print(node.data + " -> ");
 
@@ -150,6 +150,7 @@ class DoublyLl {
             }
             n1 = n.next;
             n.next = n1.next;
+            n.next.prev=n;
             System.out.println(n1.data + " deleted at index " + index);
         }
     }
@@ -167,6 +168,7 @@ class DoublyLl {
             node.next = n.next;
             node.prev = n;
             n.next = node;
+            
             if (node.next == null) {
                 tail = node;
             }
@@ -213,6 +215,7 @@ public class Doubly {
         // delete at index starts form 0
         dl.deleteAtIndex(2);
         dl.showForward(dl.head);
+        dl.showBackwards();
 
         // insertion at index starts from 0
         dl.insertAtIndex(5, 77);
