@@ -1,5 +1,13 @@
 package LinkedList;
 
-public class Circular {
 
+class Circlell{
+    Node head;
+   
+}
+
+public class Circular {
+    int data;
+    Node next;
+    Node prev;
 }
