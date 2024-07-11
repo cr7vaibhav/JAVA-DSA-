@@ -34,7 +34,7 @@ class Circlell {
         if (data == null) {
             System.out.println("list is empty");
         } else {
-            System.out.println("Nodes of circular linked list");
+            System.out.println("Nodes of circular singly linked list");
             do {
                 System.out.print(current.data + " -> ");
                 current = current.next;
