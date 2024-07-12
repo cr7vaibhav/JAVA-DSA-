@@ -1,11 +1,11 @@
 package Stack;
 
-public class ArrayStack {
+public class FixedArrayStack {
     private int arr[];
     private int top;
     private int capacity;
 
-    ArrayStack(int size) { // constructor to initalize the stack
+    FixedArrayStack(int size) { // constructor to initalize the stack
         arr = new int[size];
         capacity = size;
         top = -1;
@@ -15,20 +15,21 @@ public class ArrayStack {
         // insert element at top of stack
         if (isFull()) {
             System.out.println("Stack is full");
-            System.exit(1);
-        }
-
-        System.out.println("pushing : " + data);
-        arr[++top] = data;
+            return;
+        } 
+            System.out.println("pushing : " + data);
+            arr[++top] = data;
+        
     }
 
     public int pop() {
         // removes and returns element at top of stack
         if (isEmpty()) {
             System.out.println("Stack is empty");
-            System.exit(1);
+            return -1;
         }
         System.out.println("popping element : " + arr[top]);
+        arr[top] = 0;
         return arr[top--];
     }
 
@@ -56,7 +57,7 @@ public class ArrayStack {
     }
 
     public static void main(String[] args) {
-        ArrayStack stack = new ArrayStack(5);
+        FixedArrayStack stack = new FixedArrayStack(5);
         stack.push(5);
         stack.push(2);
         stack.push(1);
@@ -66,12 +67,16 @@ public class ArrayStack {
         stack.pop();
         stack.show();
         int size = stack.getSize();
+        stack.show();
         System.out.println("capacity of stack is " + size);
         stack.pop();
         stack.pop();
         stack.pop();
+        stack.show();
         stack.pop();
         stack.pop();
+        stack.push(3);
+        stack.show();
     }
 
 }
