@@ -16,10 +16,10 @@ public class FixedArrayStack {
         if (isFull()) {
             System.out.println("Stack is full");
             return;
-        } 
-            System.out.println("pushing : " + data);
-            arr[++top] = data;
-        
+        }
+        System.out.println("pushing : " + data);
+        arr[++top] = data;
+
     }
 
     public int pop() {
