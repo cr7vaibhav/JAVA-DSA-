@@ -5,13 +5,14 @@ public class ArrayStack {
     private int top;
     private int capacity;
 
-    ArrayStack(int size) {
+    ArrayStack(int size) { // constructor to initalize the stack
         arr = new int[size];
         capacity = size;
         top = -1;
     }
 
     public void push(int data) {
+        // insert element at top of stack
         if (isFull()) {
             System.out.println("Stack is full");
             System.exit(1);
@@ -22,6 +23,7 @@ public class ArrayStack {
     }
 
     public int pop() {
+        // removes and returns element at top of stack
         if (isEmpty()) {
             System.out.println("Stack is empty");
             System.exit(1);
@@ -31,6 +33,7 @@ public class ArrayStack {
     }
 
     public void show() {
+        // prints the stack
         for (int n : arr) {
             System.out.print(n + " -> ");
         }
@@ -38,19 +41,22 @@ public class ArrayStack {
     }
 
     public int getSize() {
+        // returns size of stack
         return top + 1;
     }
 
     public boolean isFull() {
+        // checks if stack is full
         return top == capacity - 1;
     }
 
     public boolean isEmpty() {
+        // checks if stack is empty
         return top == -1;
     }
 
     public static void main(String[] args) {
-        ArrayStack stack=new ArrayStack(5);
+        ArrayStack stack = new ArrayStack(5);
         stack.push(5);
         stack.push(2);
         stack.push(1);
@@ -59,8 +65,8 @@ public class ArrayStack {
         stack.show();
         stack.pop();
         stack.show();
-        int size=stack.getSize();
-        System.out.println("capacity of stack is "+size);
+        int size = stack.getSize();
+        System.out.println("capacity of stack is " + size);
         stack.pop();
         stack.pop();
         stack.pop();
