@@ -21,7 +21,7 @@ public class DynamicArrayStack {
 
     }
 
-    private void expand() {
+    private void expand() {//increases the size of array by 1 when stack isfull
         int length = capacity;
         int[] newStack = new int[capacity + 1];
         System.arraycopy(arr, 0, newStack, 0, length);
@@ -43,7 +43,7 @@ public class DynamicArrayStack {
         return data;
     }
 
-    private void reduce() {
+    private void reduce() {// reduces the size of array by 1 when a pop happens
         int length = capacity - 1;
         int[] newStack = new int[length];
         System.arraycopy(arr, 0, newStack, 0, length);
