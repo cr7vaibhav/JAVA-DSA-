@@ -85,5 +85,6 @@ public class queueArray {
         q.show();
         System.out.println(q.dequeue() + " removed form queue");
         q.show();
+        System.out.println(q.front() + " " + q.rear());
     }
 }
