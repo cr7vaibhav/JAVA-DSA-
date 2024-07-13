@@ -21,8 +21,10 @@ public class queueArray {
     }
 
     void enqueue(int data) {
-        if (isFull(this))
+        if (isFull(this)) {
+            System.out.println("Overflow");
             return;
+        }
         this.rear = (this.rear + 1) % this.capacity;
         this.array[this.rear] = data;
         this.size = this.size + 1;
@@ -30,8 +32,10 @@ public class queueArray {
     }
 
     int dequeue() {
-        if (isEmpty(this))
+        if (isEmpty(this)) {
+            System.out.println("Underflow");
             return Integer.MIN_VALUE;
+        }
 
         int item = this.array[this.front];
         this.front = (this.front + 1) % this.capacity;
@@ -40,15 +44,18 @@ public class queueArray {
     }
 
     int front() {
-        if (isEmpty(this))
+        if (isEmpty(this)) {
+            System.out.println("Underflow");
             return Integer.MIN_VALUE;
-
+        }
         return this.array[this.front];
     }
 
     int rear() {
-        if (isEmpty(this))
+        if (isEmpty(this)) {
+            System.out.println("Underflow");
             return Integer.MIN_VALUE;
+        }
 
         return this.array[this.rear];
     }
@@ -61,7 +68,7 @@ public class queueArray {
     }
 
     public static void main(String[] args) {
-        queueArray q = new queueArray(1000);
+        queueArray q = new queueArray(5);
         q.enqueue(5);
         q.enqueue(2);
         q.enqueue(7);
