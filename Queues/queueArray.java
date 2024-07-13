@@ -1,76 +1,82 @@
 package Queues;
 
 public class queueArray {
-    private int queue[] = new int[5];
-    private int size;
-    private int front;
-    private int rear;
-    private int capacity=queue.length;
+    int array[];
+    int size, front, rear;
+    int capacity;
 
-
-    public void enQueue(int data) {
-        if (!isFull()) {
-            queue[rear] = data;
-            rear = (rear + 1) % capacity;
-            size = size + 1;
-        } else {
-            System.out.println("Overflow");
-        }
+    queueArray(int capacity) {
+        this.capacity = capacity;
+        front = this.size = 0;
+        rear = capacity - 1;
+        array = new int[this.capacity];
     }
 
-    public int deQueue() {
-        int data = queue[front];
-        if (!isEmpty()) {
-            front = (front + 1) % capacity;
-            size = size - 1;
-        } else
-            System.out.println("Underflow");
-        return data;
+    boolean isFull(queueArray queue) {
+        return (queue.size == queue.capacity);
     }
 
-    public void show() {
-        System.out.println("Elements : ");
-        for (int i = 0; i < size; i++) {
-            System.out.print(queue[(front + i) % capacity] + " ");
+    boolean isEmpty(queueArray queue) {
+        return (queue.size == 0);
+    }
+
+    void enqueue(int data) {
+        if (isFull(this))
+            return;
+        this.rear = (this.rear + 1) % this.capacity;
+        this.array[this.rear] = data;
+        this.size = this.size + 1;
+        System.out.println(data + " inserted in queue");
+    }
+
+    int dequeue() {
+        if (isEmpty(this))
+            return Integer.MIN_VALUE;
+
+        int item = this.array[this.front];
+        this.front = (this.front + 1) % this.capacity;
+        this.size = this.size - 1;
+        return item;
+    }
+
+    int front() {
+        if (isEmpty(this))
+            return Integer.MIN_VALUE;
+
+        return this.array[this.front];
+    }
+
+    int rear() {
+        if (isEmpty(this))
+            return Integer.MIN_VALUE;
+
+        return this.array[this.rear];
+    }
+
+    void show() {
+        for (int i = 0; i < this.size; i++) {
+            System.out.print(this.array[(front + i) % this.capacity] + " "); // Corrected calculation
         }
         System.out.println();
-        for (int n : queue) {
-            System.out.print(n + " ");
-        }
-        System.out.println();
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public boolean isEmpty() {
-        return getSize() == 0;
-    }
-
-    public boolean isFull() {
-        return getSize() == capacity;
-
     }
 
     public static void main(String[] args) {
-        queueArray q = new queueArray();
-        q.enQueue(5);
-        q.enQueue(2);
-        q.enQueue(7);
-        q.enQueue(3);
-        q.deQueue();
-        q.deQueue();
+        queueArray q = new queueArray(1000);
+        q.enqueue(5);
+        q.enqueue(2);
+        q.enqueue(7);
+        q.enqueue(3);
         q.show();
-        q.enQueue(9);
-        q.enQueue(1);
+        System.out.println(q.dequeue() + " removed form queue");
+        System.out.println(q.dequeue() + " removed form queue");
         q.show();
-        q.enQueue(19);
-        q.enQueue(15);
-        System.out.println("Size:" + q.getSize());
+        q.enqueue(9);
+        q.enqueue(1);
         q.show();
-
-        
-
+        q.enqueue(19);
+        q.enqueue(15);
+        q.show();
+        System.out.println(q.dequeue() + " removed form queue");
+        q.show();
     }
 }
