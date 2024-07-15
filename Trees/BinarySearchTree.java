@@ -13,7 +13,7 @@ public class BinarySearchTree {
         tree.inorder();
         System.out.println();
         tree.preorder();
-        System.err.println();
+        System.out.println();
         tree.postorder();
     }
 }

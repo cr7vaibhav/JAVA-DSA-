@@ -2,7 +2,7 @@ package LinkedList;
 
 import java.util.LinkedList;
 
-public class LinkedListInterface {
+public class LinkedListClass {
     public static void main(String[] args) {
         
         LinkedList<Integer> ls =new LinkedList<>();
